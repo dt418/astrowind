@@ -1,0 +1,11 @@
+---
+import ProductCard from './ProductCard.astro';
+import { db } from '~/db';
+import { products } from '~/db/schema';
+
+const allProducts = await db.select().from(products);
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  {allProducts.map((product) => <ProductCard id={product.id} name={product.name} price={product.price} />)}
+</div>

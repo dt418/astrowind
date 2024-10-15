@@ -1,0 +1,14 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ProductList from '~/components/ui/ProductList.astro';
+
+const metadata = {
+  title: 'Product List',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText tagline="Products" />
+  <ProductList />
+</Layout>

@@ -17,6 +17,8 @@ jobs:
           - 18
           - 20
           - 22
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js v${{ matrix.node-version }}

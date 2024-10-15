@@ -15,14 +15,24 @@ import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
+import vercel from '@astrojs/vercel/serverless';
+import react from '@astrojs/react';
+import node from '@astrojs/node';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+let adapter = vercel();
+
+if (process.argv[3] === '--node' || process.argv[4] === '--node') {
+  adapter = node({ mode: 'standalone' });
+}
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'static',
+  output: 'hybrid',
 
   integrations: [
     tailwind({
@@ -46,13 +56,11 @@ export default defineConfig({
         ],
       },
     }),
-
     ...whenExternalScripts(() =>
       partytown({
         config: { forward: ['dataLayer.push'] },
       })
     ),
-
     compress({
       CSS: true,
       HTML: {
@@ -65,10 +73,10 @@ export default defineConfig({
       SVG: false,
       Logger: 1,
     }),
-
     astrowind({
       config: './src/config.yaml',
     }),
+    react(),
   ],
 
   image: {
@@ -87,4 +95,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: adapter,
 });

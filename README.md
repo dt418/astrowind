@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
 
-🌟 _Most *starred* & *forked* Astro theme in 2022 & 2023_. 🌟
+🌟 _Most _starred_ & _forked_ Astro theme in 2022 & 2023_. 🌟
 
 **AstroWind** is a free and open-source template to make your website using **[Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
 
@@ -15,7 +15,8 @@
 - ✅ **Open Graph tags** for social media sharing.
 - ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
 
-<br>
+\
+&nbsp;
 
 <img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/screenshot-astrowind-1.png" alt="AstroWind Theme Screenshot">
 
@@ -27,7 +28,8 @@
 [![Stars](https://img.shields.io/github/stars/onwidget/astrowind.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/onwidget/astrowind)
 [![Forks](https://img.shields.io/github/forks/onwidget/astrowind.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/onwidget/astrowind)
 
-<br>
+\
+&nbsp;
 
 <details open>
 <summary>Table of Contents</summary>
@@ -47,21 +49,24 @@
 
 </details>
 
-<br>
+\
+&nbsp;
 
 ## Demo
 
-📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
+📌 [https://danhthanh.dev](https://danhthanh.dev)
 
-<br>
+\
+&nbsp;
 
-## 🔔 Upcoming: AstroWind 2.0 – We Need Your Vision!
+## 🔔 Upcoming: AstroWind 2.0 – We Need Your Vision
 
 We're embarking on an exciting journey with **AstroWind 2.0**, and we want you to be a part of it! We're currently taking the first steps in developing this new version and your insights are invaluable. Join the discussion and share your feedback, ideas, and suggestions to help shape the future of **AstroWind**. Let's make **AstroWind 2.0** even better, together!
 
 [Share Your Feedback in Our Discussion!](https://github.com/onwidget/astrowind/discussions/392)
 
-<br>
+\
+&nbsp;
 
 ## Getting started
 
@@ -75,8 +80,17 @@ In this version the template supports all the options in the `output` configurat
 
 Inside **AstroWind** template, you'll see the following folders and files:
 
-```
+```text
 /
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+├── .vscode/
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── astrowind/
+│       └── config-schema.json
 ├── public/
 │   ├── _headers
 │   └── robots.txt
@@ -101,11 +115,15 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   │   ├── post-slug-1.md
 │   │   │   ├── post-slug-2.mdx
 │   │   │   └── ...
-│   │   └-- config.ts
+│   │   └── config.ts
+│   ├── db/
+│   │   └── [database related files]
 │   ├── layouts/
 │   │   ├── Layout.astro
 │   │   ├── MarkdownLayout.astro
 │   │   └── PageLayout.astro
+│   ├── lib/
+│   │   └── [library files]
 │   ├── pages/
 │   │   ├── [...blog]/
 │   │   │   ├── [category]/
@@ -114,14 +132,14 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   │   └── index.astro
 │   │   ├── index.astro
 │   │   ├── 404.astro
-│   │   ├-- rss.xml.ts
-│   │   └── ...
+│   │   └── rss.xml.ts
 │   ├── utils/
 │   ├── config.yaml
 │   └── navigation.js
-├── package.json
 ├── astro.config.ts
-└── ...
+├── package.json
+├── tailwind.config.cjs
+└── tsconfig.json
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
@@ -130,11 +148,14 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
+The `src/db/` directory contains database-related files, while the `src/lib/` directory holds library files and utility functions.
+
 [![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/astrowind/tree/main) [![Open in Gitpod](https://svgshare.com/i/xdi.svg)](https://gitpod.io/?on=gitpod#https://github.com/onwidget/astrowind) [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/onwidget/astrowind)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file `README.md`. Update `src/config.yaml` and contents. Have fun!
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file `README.md`. Update [`src/config.yaml`](src/config.yaml) and contents. Have fun!
 
-<br>
+\
+&nbsp;
 
 ### Commands
 
@@ -150,11 +171,12 @@ All commands are run from the root of the project, from a terminal:
 | `npm run fix`       | Run Eslint and format codes with Prettier          |
 | `npm run astro ...` | Run CLI commands like `astro add`, `astro preview` |
 
-<br>
+\
+&nbsp;
 
 ### Configuration
 
-Basic configuration file: `./src/config.yaml`
+Basic configuration file: [`src/config.yaml`](src/config.yaml)
 
 ```yaml
 site:
@@ -231,14 +253,15 @@ ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 ```
 
-<br>
+\
+&nbsp;
 
 #### Customize Design
 
 To customize Font families, Colors or more Elements refer to the following files:
 
-- `src/components/CustomStyles.astro`
-- `src/assets/styles/tailwind.css`
+- [`src/components/CustomStyles.astro`](src/components/CustomStyles.astro)
+- [`src/assets/styles/tailwind.css`](src/assets/styles/tailwind.css)
 
 ### Deploy
 
@@ -266,7 +289,8 @@ Clone this repository on your own GitHub account and deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2Fastrowind)
 
-<br>
+\
+&nbsp;
 
 ## Frequently Asked Questions
 
@@ -274,7 +298,8 @@ Clone this repository on your own GitHub account and deploy to Vercel:
 -
 -
 
-<br>
+\
+&nbsp;
 
 ## Related projects
 

@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
-import Button from '~/components/ui/Button.astro';
+// import Button from '~/components/ui/Button.astro';
+import LoginOrUserButton from '~/components/react/LoginOrUserButton';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
@@ -35,7 +36,7 @@ export interface Props {
 const {
   id = 'header',
   links = [],
-  actions = [],
+  // actions = [],
   isSticky = false,
   isDark = false,
   isFullWidth = false,
@@ -150,7 +151,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             )
           }
         </div>
-        {
+        <!-- {
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
@@ -160,7 +161,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           ) : (
             ''
           )
-        }
+        } -->
+        <div class="w-[100px] h-[40px] flex items-center justify-center">
+          <LoginOrUserButton client:load />
+        </div>
       </div>
     </div>
   </div>

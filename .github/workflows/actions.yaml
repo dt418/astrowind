@@ -19,6 +19,8 @@ jobs:
           - 22
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.PUBLIC_CLERK_PUBLISHABLE_KEY }}
+      CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js v${{ matrix.node-version }}

@@ -10,7 +10,7 @@ import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
-// import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
 import clerk from '@clerk/astro';
@@ -20,22 +20,22 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// const adapter = vercel({
-//   maxDuration: 60,
-//   imageService: true,
-//   devImageService: 'sharp',
-// });
+let adapter = vercel({
+  maxDuration: 60,
+  imageService: true,
+  devImageService: 'sharp',
+});
 
-// if (process.argv[3] === '--node' || process.argv[4] === '--node') {
-//   adapter = node({ mode: 'standalone' });
-// }
+if (process.argv[3] === '--node' || process.argv[4] === '--node') {
+  adapter = node({ mode: 'standalone' });
+}
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'server',
+  output: 'hybrid',
 
   integrations: [
     tailwind({
@@ -100,7 +100,5 @@ export default defineConfig({
     },
   },
 
-  adapter: node({
-    mode:'standalone'
-  }),
+  adapter: adapter,
 });

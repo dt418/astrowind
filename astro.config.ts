@@ -21,8 +21,7 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 let adapter = vercel({
-  edgeMiddleware:true,
-  maxDuration: 60
+  maxDuration: 60,
 });
 
 if (process.argv[3] === '--node' || process.argv[4] === '--node') {

@@ -10,14 +10,13 @@ import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
-
-import astrowind from './vendor/integration';
-
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
-
 import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
+import clerk from '@clerk/astro';
+
+import astrowind from './vendor/integration';
+import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -32,7 +31,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'hybrid',
+  output: 'server',
 
   integrations: [
     tailwind({
@@ -77,6 +76,7 @@ export default defineConfig({
       config: './src/config.yaml',
     }),
     react(),
+    clerk(),
   ],
 
   image: {

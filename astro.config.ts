@@ -20,7 +20,11 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-let adapter = vercel();
+let adapter = vercel({
+  maxDuration: 60,
+  imageService: true,
+  devImageService: 'sharp',
+});
 
 if (process.argv[3] === '--node' || process.argv[4] === '--node') {
   adapter = node({ mode: 'standalone' });
@@ -31,7 +35,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'server',
+  output: 'hybrid',
 
   integrations: [
     tailwind({

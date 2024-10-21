@@ -10,7 +10,7 @@ import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
-import vercel from '@astrojs/vercel/serverless';
+// import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
 import clerk from '@clerk/astro';
@@ -20,13 +20,15 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-let adapter = vercel({
-  maxDuration: 60,
-});
+// const adapter = vercel({
+//   maxDuration: 60,
+//   imageService: true,
+//   devImageService: 'sharp',
+// });
 
-if (process.argv[3] === '--node' || process.argv[4] === '--node') {
-  adapter = node({ mode: 'standalone' });
-}
+// if (process.argv[3] === '--node' || process.argv[4] === '--node') {
+//   adapter = node({ mode: 'standalone' });
+// }
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
@@ -98,5 +100,7 @@ export default defineConfig({
     },
   },
 
-  adapter: adapter,
+  adapter: node({
+    mode:'standalone'
+  }),
 });

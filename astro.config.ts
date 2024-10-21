@@ -13,7 +13,6 @@ import type { AstroIntegration } from 'astro';
 import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
-import clerk from '@clerk/astro';
 
 import astrowind from './vendor/integration';
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
@@ -80,7 +79,6 @@ export default defineConfig({
       config: './src/config.yaml',
     }),
     react(),
-    clerk(),
   ],
 
   image: {
